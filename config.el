@@ -49,6 +49,12 @@
 ;; Prevent kill ring from accessing the system clipboard
 (setq select-enable-clipboard nil)
 
+(map! :desc "Emulate pasting from terminal" :i "C-S-V" (cmd!
+                                                        (setq select-enable-clipboard t)
+                                                        (evil-paste-before 1)
+                                                        (setq select-enable-clipboard nil)
+                                                        ))
+
 ;; Restore native vim "s" functionality
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
