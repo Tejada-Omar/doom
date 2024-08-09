@@ -44,7 +44,11 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq! org-directory "~/Documents/org/")
 
+;; Changing indent widths
+(setq! tab-width 2)
 
+(setq! sh-basic-offset 2)
+(setq! c-basic-offset 2)
 
 ;; Restore native vim "s" functionality
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
