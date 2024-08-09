@@ -118,3 +118,8 @@
        doom-localleader-alt-key "M-SPC")
 
 (after! treemacs (setq! +treemacs-git-mode 'deferred))
+
+(add-hook 'sh-mode-hook
+          #'(lambda ()
+              (setq +format-with 'shfmt)
+              ))
