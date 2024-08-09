@@ -116,3 +116,5 @@
        doom-leader-alt-key "M-\\"
        doom-localleader-key "SPC"
        doom-localleader-alt-key "M-SPC")
+
+(after! treemacs (setq! +treemacs-git-mode 'deferred))
