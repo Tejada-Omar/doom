@@ -53,6 +53,9 @@
 ;; Restore native vim "s" functionality
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
+;; Disable spell-checking by default
+(use-package! spell-fu :config '(spell-fu-mode -1))
+
 ;; Make `cw' behave like `cw' not `ce'
 (setq! evil-want-change-word-to-end nil)
 
