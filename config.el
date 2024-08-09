@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 ;; (setq user-full-name "John Doe"
@@ -20,11 +19,10 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
-(setq doom-font (font-spec :family "JetBrainsMono" :size 18)
-      doom-big-font (font-spec :family "JetBrainsMono" :size 24)
-      doom-variable-pitch-font (font-spec :family "NotoSans" :size 19))
-;;
+(setq! doom-font (font-spec :family "JetBrains Mono" :size 18)
+       doom-big-font (font-spec :family "JetBrains Mono" :size 24)
+       doom-variable-pitch-font (font-spec :family "Noto Sans" :size 19))
+
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
@@ -36,15 +34,15 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tokyo-night)
+(setq! doom-theme 'doom-tokyo-night)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq! display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Documents/org/")
+(setq! org-directory "~/Documents/org/")
 
 ;; Prevent kill ring from accessing the system clipboard
 (setq select-enable-clipboard nil)
@@ -89,33 +87,32 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
 (after! org
-  (setq org-capture-templates
-        '(("t" "Personal todo entry" entry (file+headline +org-capture-todo-file "Inbox")
-           "* TODO %?\n%i\n%a" :prepend t)
-          ("n" "Personal notes" entry
-           (file+headline +org-capture-notes-file "Inbox")
-           "* %u %?\n%i\n%a" :prepend t)
-          ("j" "Journal" entry
-           (file+olp+datetree +org-capture-journal-file)
-           "* %U %?\n%i\n%a" :prepend t)
-          ("p" "Templates for projects")
-          ("pt" "Project-local todo" entry
-           (file+headline +org-capture-project-todo-file "Inbox")
-           "* TODO %?\n%i\n%a" :prepend t)
-          ("pn" "Project-local notes" entry
-           (file+headline +org-capture-project-notes-file "Inbox")
-           "* %U %?\n%i\n%a" :prepend t)
-          ("pc" "Project-local changelog" entry
-           (file+headline +org-capture-project-changelog-file "Unreleased")
-           "* %U %?\n%i\n%a" :prepend t)
-          ("o" "Centralized templates for projects")
-          ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
-          ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
-          ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
+  (setq! org-capture-templates
+         '(("t" "Personal todo entry" entry (file+headline +org-capture-todo-file "Inbox")
+            "* TODO %?\n%i\n%a" :prepend t)
+           ("n" "Personal notes" entry
+            (file+headline +org-capture-notes-file "Inbox")
+            "* %u %?\n%i\n%a" :prepend t)
+           ("j" "Journal" entry
+            (file+olp+datetree +org-capture-journal-file)
+            "* %U %?\n%i\n%a" :prepend t)
+           ("p" "Templates for projects")
+           ("pt" "Project-local todo" entry
+            (file+headline +org-capture-project-todo-file "Inbox")
+            "* TODO %?\n%i\n%a" :prepend t)
+           ("pn" "Project-local notes" entry
+            (file+headline +org-capture-project-notes-file "Inbox")
+            "* %U %?\n%i\n%a" :prepend t)
+           ("pc" "Project-local changelog" entry
+            (file+headline +org-capture-project-changelog-file "Unreleased")
+            "* %U %?\n%i\n%a" :prepend t)
+           ("o" "Centralized templates for projects")
+           ("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
+           ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
+           ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
 
-(setq doom-leader-key "\\"
-      doom-leader-alt-key "M-\\"
-      doom-localleader-key "SPC"
-      doom-localleader-alt-key "M-SPC")
+(setq! doom-leader-key "\\"
+       doom-leader-alt-key "M-\\"
+       doom-localleader-key "SPC"
+       doom-localleader-alt-key "M-SPC")
