@@ -91,6 +91,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (after! org
+  (setq! org-display-custom-times t)
+  ;; FIXME: org-agenda-prefix-format not picking up org-time-stamp-custom-formats
+  ;; Requires additional configuration
+  (setq! org-time-stamp-custom-formats '("<%m/%d/%y %a>" . "<%m/%d/%y %a %I:%M %p>"))
   (setq! org-capture-templates
          '(("t" "Personal todo entry" entry (file+headline +org-capture-todo-file "Inbox")
             "* TODO %?\n%i\n%a" :prepend t)
