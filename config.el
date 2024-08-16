@@ -97,7 +97,7 @@
   (setq! org-time-stamp-custom-formats '("<%m/%d/%y %a>" . "<%m/%d/%y %a %I:%M %p>"))
   (setq! org-capture-templates
          '(("t" "Personal todo entry" entry (file+headline +org-capture-todo-file "Inbox")
-            "* TODO %?\n%i\n%a" :prepend t)
+            "* TODO %?\n%i\nCaptured on %T\n\nCaptured from %a" :prepend t)
            ("n" "Personal notes" entry
             (file+headline +org-capture-notes-file "Inbox")
             "* %u %?\n%i\n%a" :prepend t)
