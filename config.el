@@ -130,3 +130,6 @@
           #'(lambda ()
               (setq +format-with 'shfmt)
               ))
+
+(use-package! org-edna
+  :config (org-edna-mode))
