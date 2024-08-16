@@ -133,3 +133,13 @@
 
 (use-package! org-edna
   :config (org-edna-mode))
+
+(after! lsp-mode
+  (setq! lsp-go-use-gofumpt t)
+  (setq! lsp-go-analyses '((fieldalignment . t)
+                           (nilness . t)
+                           (shadow . t)
+                           (unusedwrite . t)
+                           (unusedparams . t)
+                           (useany . t)
+                           (unusedvariable . t))))
