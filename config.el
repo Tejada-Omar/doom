@@ -53,6 +53,9 @@
 ;; Restore native vim "s" functionality
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 
+;; TODO: Look into *removing* extraneous newlines
+(setq! require-final-newline nil)
+(setq! mode-require-final-newline nil)
 
 ;; Make `cw' behave like `cw' not `ce'
 (setq! evil-want-change-word-to-end nil)
