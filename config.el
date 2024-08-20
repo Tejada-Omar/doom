@@ -94,6 +94,7 @@
 (after! org
   ;; FIXME: org-agenda-prefix-format not picking up org-time-stamp-custom-formats
   ;; Requires additional configuration
+  (setq! org-startup-folded 'content)
   (setq! org-log-done t)
   (setq! org-log-into-drawer t)
   (setq! org-time-stamp-custom-formats '("<%m/%d/%y %a>" . "<%m/%d/%y %a %I:%M %p>"))
