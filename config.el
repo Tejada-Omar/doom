@@ -146,3 +146,6 @@
                            (unusedparams . t)
                            (useany . t)
                            (unusedvariable . t))))
+
+;; TODO: Look into setting depending on major mode
+(setq! find-sibling-rules `(("\\([^/]+\\)\\.go\\'" "\\1_test.go") ("\\([^/]+\\)_test\\.go\\'" "\\1.go")))
