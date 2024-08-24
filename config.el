@@ -196,3 +196,7 @@
       :desc "dap breakpoint condition"   "c" #'dap-breakpoint-condition
       :desc "dap breakpoint hit count"   "h" #'dap-breakpoint-hit-condition
       :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message)
+
+(use-package! org-alert
+  :custom (alert-default-style 'notifications) (org-alert-notification-title "Org Alert Reminder!")
+  (org-alert-enable))

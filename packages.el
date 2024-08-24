@@ -53,3 +53,5 @@
 (package! org-edna)
 
 (package! aggressive-indent-mode)
+
+(package! org-alert)
