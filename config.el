@@ -177,5 +177,8 @@
   :config (org-edna-mode))
 
 (use-package! org-alert
-  :custom (alert-default-style 'notifications) (org-alert-notification-title "Org Alert Reminder!")
+  :custom
+  (alert-default-style 'notifications)
+  (org-alert-notification-title "Org Alert Reminder!")
+  (org-alert-interval 300)
   (org-alert-enable))
