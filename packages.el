@@ -51,3 +51,5 @@
 ;; (unpin! t)
 
 (package! org-edna)
+
+(package! aggressive-indent-mode)

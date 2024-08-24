@@ -165,6 +165,8 @@
 (map! :leader :desc "Dirvish" "o=" 'dirvish)
 (map! :leader :desc "Open dirvish side-bar" "op" 'dirvish-side)
 
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
 (map! :map dap-mode-map
       :leader
       :prefix ("d" . "dap")
