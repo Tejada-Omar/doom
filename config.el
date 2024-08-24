@@ -91,8 +91,8 @@
            ("m" "~/media/" "Media Drive")))
   (dirvish-side-follow-mode))
 
-(map! :leader :desc "Dirvish" "o=" 'dirvish)
-(map! :leader :desc "Open dirvish side-bar" "op" 'dirvish-side)
+(map! :leader :desc "Dirvish" "o=" #'dirvish)
+(map! :leader :desc "Open dirvish side-bar" "op" #'dirvish-side)
 
 ;;;; LSP
 
