@@ -8,6 +8,9 @@
 ;; (setq user-full-name "John Doe"
 ;;       user-mail-address "john@doe.com")
 
+
+;;; Theming
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -40,9 +43,9 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq! display-line-numbers-type 'relative)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq! org-directory "~/Documents/org/")
+;;; Editor
+
+;;;; Basic Settings
 
 ;; Changing indent widths
 (setq! tab-width 2)
@@ -59,6 +62,88 @@
 
 ;; Make `cw' behave like `cw' not `ce'
 (setq! evil-want-change-word-to-end nil)
+
+(setq! doom-leader-key "\\"
+       doom-leader-alt-key "M-\\"
+       doom-localleader-key "SPC"
+       doom-localleader-alt-key "M-SPC")
+
+;;;; Formatters
+
+(add-hook 'sh-mode-hook
+          #'(lambda ()
+              (setq +format-with 'shfmt)))
+
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+
+;;;; Navigation
+
+;; TODO: Look into setting depending on major mode
+(setq! find-sibling-rules
+       `(("\\([^/]+\\)\\.go\\'" "\\1_test.go") ("\\([^/]+\\)_test\\.go\\'" "\\1.go")
+         ("\\([^/]+\\)\\.org\\'" "\\1.org_archive") ("\\([^/]+\\)\\.org_archive\\'" "\\1.org")))
+
+(after! dirvish
+  (setq dirvish-attributes '(vc-state file-size file-time nerd-icons))
+  (setq! dirvish-quick-access-entries
+         `(("h" "~/" "Home")
+           ("c" "~/Code/" "Code")
+           ("d" "~/Downloads/" "Downloads")
+           ("p" "~/Pictures/" "Base Pictures")
+           ("m" "~/media/" "Media Drive")))
+  (dirvish-side-follow-mode))
+
+(map! :leader :desc "Dirvish" "o=" 'dirvish)
+(map! :leader :desc "Open dirvish side-bar" "op" 'dirvish-side)
+
+;;;; LSP
+
+(after! lsp-mode
+  (setq! lsp-go-use-gofumpt t)
+  (setq! lsp-go-analyses '((fieldalignment . t)
+                           (nilness . t)
+                           (shadow . t)
+                           (unusedwrite . t)
+                           (unusedparams . t)
+                           (useany . t)
+                           (unusedvariable . t))))
+
+(map! :map dap-mode-map
+      :leader
+      :prefix ("d" . "dap")
+      ;; basics
+      :desc "dap next"          "n" #'dap-next
+      :desc "dap step in"       "i" #'dap-step-in
+      :desc "dap step out"      "o" #'dap-step-out
+      :desc "dap continue"      "c" #'dap-continue
+      :desc "dap hydra"         "h" #'dap-hydra
+      :desc "dap debug restart" "r" #'dap-debug-restart
+      :desc "dap debug"         "s" #'dap-debug
+
+      ;; debug
+      :prefix ("dd" . "Debug")
+      :desc "dap debug recent"  "r" #'dap-debug-recent
+      :desc "dap debug last"    "l" #'dap-debug-last
+
+      ;; eval
+      :prefix ("de" . "Eval")
+      :desc "eval"                "e" #'dap-eval
+      :desc "eval region"         "r" #'dap-eval-region
+      :desc "eval thing at point" "s" #'dap-eval-thing-at-point
+      :desc "add expression"      "a" #'dap-ui-expressions-add
+      :desc "remove expression"   "d" #'dap-ui-expressions-remove
+
+      :prefix ("db" . "Breakpoint")
+      :desc "dap breakpoint toggle"      "b" #'dap-breakpoint-toggle
+      :desc "dap breakpoint condition"   "c" #'dap-breakpoint-condition
+      :desc "dap breakpoint hit count"   "h" #'dap-breakpoint-hit-condition
+      :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message)
+
+;;; Org
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq! org-directory "~/Documents/org/")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -122,80 +207,8 @@
            ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
            ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
 
-(setq! doom-leader-key "\\"
-       doom-leader-alt-key "M-\\"
-       doom-localleader-key "SPC"
-       doom-localleader-alt-key "M-SPC")
-
-(add-hook 'sh-mode-hook
-          #'(lambda ()
-              (setq +format-with 'shfmt)))
-
-
 (use-package! org-edna
   :config (org-edna-mode))
-
-(after! lsp-mode
-  (setq! lsp-go-use-gofumpt t)
-  (setq! lsp-go-analyses '((fieldalignment . t)
-                           (nilness . t)
-                           (shadow . t)
-                           (unusedwrite . t)
-                           (unusedparams . t)
-                           (useany . t)
-                           (unusedvariable . t))))
-
-;; TODO: Look into setting depending on major mode
-(setq! find-sibling-rules
-       `(("\\([^/]+\\)\\.go\\'" "\\1_test.go") ("\\([^/]+\\)_test\\.go\\'" "\\1.go")
-         ("\\([^/]+\\)\\.org\\'" "\\1.org_archive") ("\\([^/]+\\)\\.org_archive\\'" "\\1.org")))
-
-(after! dirvish
-  (setq dirvish-attributes '(vc-state file-size file-time nerd-icons))
-  (setq! dirvish-quick-access-entries
-         `(("h" "~/" "Home")
-           ("c" "~/Code/" "Code")
-           ("d" "~/Downloads/" "Downloads")
-           ("p" "~/Pictures/" "Base Pictures")
-           ("m" "~/media/" "Media Drive")))
-  (dirvish-side-follow-mode))
-
-
-(map! :leader :desc "Dirvish" "o=" 'dirvish)
-(map! :leader :desc "Open dirvish side-bar" "op" 'dirvish-side)
-
-(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-
-(map! :map dap-mode-map
-      :leader
-      :prefix ("d" . "dap")
-      ;; basics
-      :desc "dap next"          "n" #'dap-next
-      :desc "dap step in"       "i" #'dap-step-in
-      :desc "dap step out"      "o" #'dap-step-out
-      :desc "dap continue"      "c" #'dap-continue
-      :desc "dap hydra"         "h" #'dap-hydra
-      :desc "dap debug restart" "r" #'dap-debug-restart
-      :desc "dap debug"         "s" #'dap-debug
-
-      ;; debug
-      :prefix ("dd" . "Debug")
-      :desc "dap debug recent"  "r" #'dap-debug-recent
-      :desc "dap debug last"    "l" #'dap-debug-last
-
-      ;; eval
-      :prefix ("de" . "Eval")
-      :desc "eval"                "e" #'dap-eval
-      :desc "eval region"         "r" #'dap-eval-region
-      :desc "eval thing at point" "s" #'dap-eval-thing-at-point
-      :desc "add expression"      "a" #'dap-ui-expressions-add
-      :desc "remove expression"   "d" #'dap-ui-expressions-remove
-
-      :prefix ("db" . "Breakpoint")
-      :desc "dap breakpoint toggle"      "b" #'dap-breakpoint-toggle
-      :desc "dap breakpoint condition"   "c" #'dap-breakpoint-condition
-      :desc "dap breakpoint hit count"   "h" #'dap-breakpoint-hit-condition
-      :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message)
 
 (use-package! org-alert
   :custom (alert-default-style 'notifications) (org-alert-notification-title "Org Alert Reminder!")
