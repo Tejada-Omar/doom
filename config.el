@@ -129,8 +129,8 @@
 
 (add-hook 'sh-mode-hook
           #'(lambda ()
-              (setq +format-with 'shfmt)
-              ))
+              (setq +format-with 'shfmt)))
+
 
 (use-package! org-edna
   :config (org-edna-mode))
@@ -157,10 +157,9 @@
            ("c" "~/Code/" "Code")
            ("d" "~/Downloads/" "Downloads")
            ("p" "~/Pictures/" "Base Pictures")
-           ("m" "~/media/" "Media Drive")
-           ))
-  (dirvish-side-follow-mode)
-  )
+           ("m" "~/media/" "Media Drive")))
+  (dirvish-side-follow-mode))
+
 
 (map! :leader :desc "Dirvish" "o=" 'dirvish)
 (map! :leader :desc "Open dirvish side-bar" "op" 'dirvish-side)
