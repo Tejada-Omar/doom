@@ -178,7 +178,7 @@
 
 (use-package! org-alert
   :custom
-  (alert-default-style 'notifications)
+  (alert-default-style 'libnotify) ;; TODO: Look into expanding customization over dbus notifications
   (org-alert-notification-title "Org Alert Reminder!")
   (org-alert-interval 300)
   (org-alert-enable))
