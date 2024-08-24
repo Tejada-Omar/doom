@@ -174,7 +174,9 @@
            ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
 
 (use-package! org-edna
-  :config (org-edna-mode))
+  :config
+  (map! :mode 'org-mode :localleader :desc "Edit Edna properties" "O" #'org-edna-edit)
+  (org-edna-mode))
 
 (use-package! org-alert
   :custom
