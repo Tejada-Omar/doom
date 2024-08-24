@@ -146,7 +146,9 @@
                            (unusedvariable . t))))
 
 ;; TODO: Look into setting depending on major mode
-(setq! find-sibling-rules `(("\\([^/]+\\)\\.go\\'" "\\1_test.go") ("\\([^/]+\\)_test\\.go\\'" "\\1.go")))
+(setq! find-sibling-rules
+       `(("\\([^/]+\\)\\.go\\'" "\\1_test.go") ("\\([^/]+\\)_test\\.go\\'" "\\1.go")
+         ("\\([^/]+\\)\\.org\\'" "\\1.org_archive") ("\\([^/]+\\)\\.org_archive\\'" "\\1.org")))
 
 (after! dirvish
   (setq dirvish-attributes '(vc-state file-size file-time nerd-icons))
