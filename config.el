@@ -127,8 +127,6 @@
        doom-localleader-key "SPC"
        doom-localleader-alt-key "M-SPC")
 
-(after! treemacs (setq! +treemacs-git-mode 'deferred))
-
 (add-hook 'sh-mode-hook
           #'(lambda ()
               (setq +format-with 'shfmt)
@@ -149,3 +147,18 @@
 
 ;; TODO: Look into setting depending on major mode
 (setq! find-sibling-rules `(("\\([^/]+\\)\\.go\\'" "\\1_test.go") ("\\([^/]+\\)_test\\.go\\'" "\\1.go")))
+
+(after! dirvish
+  (setq dirvish-attributes '(vc-state file-size file-time nerd-icons))
+  (setq! dirvish-quick-access-entries
+         `(("h" "~/" "Home")
+           ("c" "~/Code/" "Code")
+           ("d" "~/Downloads/" "Downloads")
+           ("p" "~/Pictures/" "Base Pictures")
+           ("m" "~/media/" "Media Drive")
+           ))
+  (dirvish-side-follow-mode)
+  )
+
+(map! :leader :desc "Dirvish" "o=" 'dirvish)
+(map! :leader :desc "Open dirvish side-bar" "op" 'dirvish-side)
