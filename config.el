@@ -74,8 +74,6 @@
           #'(lambda ()
               (setq +format-with 'shfmt)))
 
-(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-
 ;;;; Navigation
 
 ;; TODO: Look into setting depending on major mode
