@@ -88,6 +88,7 @@
   (setq! dirvish-quick-access-entries
          `(("h" "~/" "Home")
            ("c" "~/Code/" "Code")
+           ("a" "~/Documents/" "Documents")
            ("d" "~/Downloads/" "Downloads")
            ("p" "~/Pictures/" "Base Pictures")
            ("m" "~/media/" "Media Drive")))
