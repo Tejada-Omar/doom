@@ -175,11 +175,6 @@
            ("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
            ("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t))))
 
-(use-package! org-edna
-  :config
-  (map! :mode 'org-mode :localleader :desc "Edit Edna properties" "O" #'org-edna-edit)
-  (org-edna-mode))
-
 (use-package! org-alert
   :custom
   (alert-default-style 'libnotify) ;; TODO: Look into expanding customization over dbus notifications
