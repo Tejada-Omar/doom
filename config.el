@@ -187,3 +187,8 @@
   (org-alert-notification-title "Org Alert Reminder!")
   (org-alert-interval 300)
   :config (org-alert-enable))
+
+;;; RSS
+
+(map! :leader :desc "Elfeed" "os" #'elfeed)
+(map! :mode elfeed-search-mode :localleader :desc "Refresh elfeed" "r" #'elfeed-update)
