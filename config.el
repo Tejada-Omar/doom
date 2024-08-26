@@ -198,3 +198,7 @@
 
 (map! :leader :desc "Elfeed" "os" #'elfeed)
 (map! :mode elfeed-search-mode :localleader :desc "Refresh elfeed" "r" #'elfeed-update)
+
+;;; Magit
+
+(setq! magit-branch-read-upstream-first 'fallback)
