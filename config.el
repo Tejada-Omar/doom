@@ -68,6 +68,8 @@
        doom-localleader-key "SPC"
        doom-localleader-alt-key "M-SPC")
 
+(setq! select-enable-primary t)
+
 ;;;; Formatters
 
 (add-hook 'sh-mode-hook
