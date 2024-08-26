@@ -149,6 +149,7 @@
   (setq! org-log-done t)
   (setq! org-log-into-drawer t)
   (setq! org-time-stamp-custom-formats '("<%m/%d/%y %a>" . "<%m/%d/%y %a %I:%M %p>"))
+  (setq! org-modules '(ol-bibtex org-habit))
   (setq! +org-capture-todo-file "inbox.org")
   (setq! org-capture-templates
          '(("t" "Personal todo entry" entry (file +org-capture-todo-file)
