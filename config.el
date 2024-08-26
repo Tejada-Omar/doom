@@ -22,10 +22,8 @@
 
 ;;; Emacs Specific
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(after! org
+  (load! "private" doom-user-dir t))
 
 ;;; Theming
 
@@ -187,6 +185,14 @@
   (org-alert-notification-title "Org Alert Reminder!")
   (org-alert-interval 300)
   :config (org-alert-enable))
+
+;;;; Calendar
+
+(after! org-gcal
+  (setq! org-gcal-cancelled-todo-keyword "KILL"
+         org-gcal-recurring-events-mode 'nested))
+
+(map! :leader :desc "Open cfw calendar" "oc" #'cfw:open-org-calendar)
 
 ;;; RSS
 
