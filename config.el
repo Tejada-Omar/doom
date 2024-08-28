@@ -39,6 +39,7 @@
 
 ;; Can be loaded with `doom-theme' variable or `load-theme' function
 (setq! doom-theme 'doom-tokyo-night)
+(setq! +doom-dashboard-functions '(doom-dashboard-widget-banner))
 
 (setq! display-line-numbers-type 'relative)
 
