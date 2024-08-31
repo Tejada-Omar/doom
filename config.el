@@ -158,10 +158,10 @@
   (setq! org-agenda-skip-deadline-prewarning-if-scheduled t)
   (setq! org-capture-templates
          '(("t" "Personal todo entry" entry (file +org-capture-todo-file)
-            "* TODO %?\n%i\nCaptured on %T\n\nCaptured from %a" :prepend t)
+            "* TODO %?\n%i %^{CREATED|%U}p\n%a" :prepend t)
            ("n" "Personal notes" entry
             (file+headline +org-capture-notes-file "Inbox")
-            "* %u %?\n%i\n%a" :prepend t)
+            "* %?\n%i\n%a %^{CREATED|%U}p" :prepend t)
            ("j" "Journal" entry
             (file+olp+datetree +org-capture-journal-file)
             "* %U %?\n%i\n%a" :prepend t)
