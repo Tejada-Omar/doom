@@ -142,7 +142,8 @@
 ;;; Org
 
 ;; Must be set before org loads
-(setq! org-directory "~/Documents/org/")
+(setq! org-directory "~/Documents/org/"
+       org-agenda-files '("~/Documents/org" "~/Documents/org/gcal"))
 
 (after! org
   ;; FIXME: org-agenda-prefix-format not picking up org-time-stamp-custom-formats
