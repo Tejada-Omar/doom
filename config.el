@@ -187,6 +187,7 @@
   (org-edna-mode))
 
 (use-package! org-alert
+  :disabled
   :custom
   (alert-default-style 'libnotify) ;; TODO: Look into expanding customization over dbus notifications
   (org-alert-notification-title "Org Alert Reminder!")
