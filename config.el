@@ -210,3 +210,7 @@
 ;;; Magit
 
 (setq! magit-branch-read-upstream-first 'fallback)
+;;; Latex
+
+(setq! org-latex-packages-alist '(("twoside,left=1cm,right=0.8cm,vmargin=2cm,heightrounded" "geometry")
+                                  ("extreme" "savetrees")))
